@@ -1,4 +1,4 @@
-# oneM2M REST API
+# oneM2M 기능 REST API
 
 Node.js 기반 REST API
 - oneM2M 표준을 기반으로 구현
