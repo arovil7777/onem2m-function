@@ -40,7 +40,7 @@ app.listen(3000, function () {
     // console.log(value&'14')
     // console.log('서버 작동 중 : http://localhost:10210/swagger');
 });
-app.listen(10210, function () {
+app.listen(3000, function () {
     console.log('서버 작동 중 : http://localhost:10210');
 });
 

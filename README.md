@@ -22,5 +22,5 @@
 #### Run
 
 * Swagger
-`npm run dev`  
+`npm run start`  
 https://localhost:3000/swagger
