@@ -1,0 +1,3286 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "oneM2M API",
+        "description": "oneM2M API 1.0",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "/",
+            "description": "Default",
+            "variables": {}
+        }
+    ],
+    "paths": {
+        "/api/onem2m/devices": {
+            "post": {
+                "tags": [
+                    "AE"
+                ],
+                "description": "Application Entity 리소스 등록",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AE_Create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "AE 리소스 등록",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/{ae}": {
+            "get": {
+                "tags": [
+                    "AE"
+                ],
+                "description": "Application Entity 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "AE 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "AE"
+                ],
+                "description": "Application Entity 리소스 업데이트",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AE_Update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "AE 리소스 업데이트",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "AE"
+                ],
+                "description": "Application Entity 리소스 삭제",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "AE 리소스 삭제",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/sensors/{ae}": {
+            "post": {
+                "tags": [
+                    "Container"
+                ],
+                "description": "Container 리소스 등록",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CNT_Create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "CNT 리소스 등록",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/sensors/{ae}/{cnt}": {
+            "get": {
+                "tags": [
+                    "Container"
+                ],
+                "description": "Container 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cnt",
+                        "in": "path",
+                        "description": "CNT resourceName, CNT 리소스의 이름",
+                        "example": "Test_CNT_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "CNT 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Container"
+                ],
+                "description": "Container 리소스 업데이트",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cnt",
+                        "in": "path",
+                        "description": "CNT resourceName, CNT 리소스의 이름",
+                        "example": "Test_CNT_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CNT_Update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "CNT 리소스 업데이트",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Container"
+                ],
+                "description": "Container 리소스 삭제",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cnt",
+                        "in": "path",
+                        "description": "CNT resourceName, CNT 리소스의 이름",
+                        "example": "Test_CNT_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "CNT 리소스 삭제",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/data/{ae}/{cnt}": {
+            "post": {
+                "tags": [
+                    "contentInstance"
+                ],
+                "description": "contentInstance 리소스 등록",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cnt",
+                        "in": "path",
+                        "description": "CNT resourceName, CNT 리소스의 이름",
+                        "example": "Test_CNT_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CIN_Create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "CIN 리소스 등록",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/data/{ae}/{cnt}/{cin}": {
+            "get": {
+                "tags": [
+                    "contentInstance"
+                ],
+                "description": "contentInstance 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cnt",
+                        "in": "path",
+                        "description": "CNT resourceName, CNT 리소스의 이름",
+                        "example": "Test_CNT_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cin",
+                        "in": "path",
+                        "description": "CIN resourceName, CIN 리소스의 이름",
+                        "example": "4-20211220021030252",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "CIN 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "contentInstance"
+                ],
+                "description": "contentInstance 리소스 삭제",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cnt",
+                        "in": "path",
+                        "description": "CNT resourceName, CNT 리소스의 이름",
+                        "example": "Test_CNT_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cin",
+                        "in": "path",
+                        "description": "CIN resourceName, CIN 리소스의 이름",
+                        "example": "4-20211220021030252",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "CIN 리소스 삭제",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/data/{ae}/{cnt}/latest": {
+            "get": {
+                "tags": [
+                    "contentInstance"
+                ],
+                "description": "가장 최신 contentInstance 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cnt",
+                        "in": "path",
+                        "description": "CNT resourceName, CNT 리소스의 이름",
+                        "example": "STest_CNT_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "가장 최신 CIN 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/data/{ae}/{cnt}/oldest": {
+            "get": {
+                "tags": [
+                    "contentInstance"
+                ],
+                "description": "가장 과거 contentInstance 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cnt",
+                        "in": "path",
+                        "description": "CNT resourceName, CNT 리소스의 이름",
+                        "example": "Test_CNT_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "가장 과거 CIN 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/nodes": {
+            "post": {
+                "tags": [
+                    "Node"
+                ],
+                "description": "Node 리소스 등록",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NOD_Create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "NOD 리소스 등록",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/nodes/{nod}": {
+            "get": {
+                "tags": [
+                    "Node"
+                ],
+                "description": "Node 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "NOD 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Node"
+                ],
+                "description": "Node 리소스 업데이트",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/NOD_Update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "NOD 리소스 업데이트",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Node"
+                ],
+                "description": "Node 리소스 삭제",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "NOD 리소스 삭제",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/list/AEs": {
+            "get": {
+                "tags": [
+                    "Discovery"
+                ],
+                "description": "해당 CSEBase 내의 모든 Application Entity 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "모든 AE 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/list/CNTs": {
+            "get": {
+                "tags": [
+                    "Discovery"
+                ],
+                "description": "해당 CSEBase 내의 모든 Contaier 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "모든 CNT 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/list/{ae}/CNTs": {
+            "get": {
+                "tags": [
+                    "Discovery"
+                ],
+                "description": "특정 Application Entity 리소스 하위의 Container 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "특정 AE 하위 CNT 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/list/CINs": {
+            "get": {
+                "tags": [
+                    "Discovery"
+                ],
+                "description": "해당 CSEBase 내의 모든 contentInstance 리소스 조회 (20개 제한)",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "모든 CIN 리소스 조회 (20개 제한)",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/group/{ae}": {
+            "post": {
+                "tags": [
+                    "Group"
+                ],
+                "description": "Group 리소스 등록",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GRP_Create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "GRP 리소스 등록",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/group/{ae}/{grp}": {
+            "get": {
+                "tags": [
+                    "Group"
+                ],
+                "description": "Application Entity 리소스 하위 Group 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "grp",
+                        "in": "path",
+                        "description": "GRP resourceName, GRP 리소스의 이름",
+                        "example": "Test_GRP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "AE 하위 GRP 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Group"
+                ],
+                "description": "Group 리소스 업데이트",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "grp",
+                        "in": "path",
+                        "description": "GRP resourceName, GRP 리소스의 이름",
+                        "example": "Test_GRP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GRP_Update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "GRP 리소스 업데이트",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Group"
+                ],
+                "description": "Group 리소스 삭제",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "grp",
+                        "in": "path",
+                        "description": "GRP resourceName, GRP 리소스의 이름",
+                        "example": "Test_GRP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "GRP 리소스 삭제",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/group/{ae}/{grp}/data": {
+            "get": {
+                "tags": [
+                    "Group"
+                ],
+                "description": "Group 리소스 멤버 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "grp",
+                        "in": "path",
+                        "description": "GRP resourceName, GRP 리소스의 이름",
+                        "example": "Test_GRP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "GRP 리소스 멤버 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Group"
+                ],
+                "description": "Group 리소스 멤버 데이터 제어",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "grp",
+                        "in": "path",
+                        "description": "GRP resourceName, GRP 리소스의 이름",
+                        "example": "Test_GRP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/GRP_Member_Control"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "GRP 리소스 멤버 데이터 제어",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/noti/{ae}": {
+            "post": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Application Entity 리소스 하위 Subscription 리소스 등록",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SUB_Create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "AE 하위 SUB 리소스 등록",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/noti/{ae}/{cnt}": {
+            "post": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Container 리소스 하위 Subscription 리소스 등록",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cnt",
+                        "in": "path",
+                        "description": "CNT resourceName, CNT 리소스의 이름",
+                        "example": "Test_CNT_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SUB_Create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "CNT 하위 SUB 리소스 등록",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/noti/{nod}": {
+            "post": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Node 리소스 하위 Subscription 리소스 등록",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SUB_Create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "NOD 하위 SUB 리소스 등록",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/noti/{ae}/{grp}": {
+            "post": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Group 리소스 하위 Subscription 리소스 등록",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_GROUP_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_GROUP_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "grp",
+                        "in": "path",
+                        "description": "GRP resourceName, GRP 리소스의 이름",
+                        "example": "Test_GRP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SUB_Create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "GRP 하위 SUB 리소스 등록",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/noti/{nod}/{fwr}": {
+            "post": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Firmware 리소스 하위 Subscription 리소스 등록",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fwr",
+                        "in": "path",
+                        "description": "FWR resourceName, FWR 리소스의 이름",
+                        "example": "Test_FWR_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SUB_Create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "FWR 하위 SUB 리소스 등록",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/noti/{ae}/{sub}": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Application Entity 리소스 하위 Subscription 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "AE 하위 SUB 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Application Entity 리소스 하위 Subscription 리소스 업데이트",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SUB_Update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "AE 하위 SUB 리소스 업데이트",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Application Entity 리소스 하위 Subscription 리소스 삭제",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "AE 하위 SUB 리소스 삭제",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/noti/{ae}/{cnt}/{sub}": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Container 리소스 하위 Subscription 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cnt",
+                        "in": "path",
+                        "description": "CNT resourceName, CNT 리소스의 이름",
+                        "example": "Test_CNT_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "CNT 하위 SUB 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Container 리소스 하위 Subscription 리소스 업데이트",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cnt",
+                        "in": "path",
+                        "description": "CNT resourceName, CNT 리소스의 이름",
+                        "example": "Test_CNT_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SUB_Update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "CNT 하위 SUB 리소스 업데이트",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Container 리소스 하위 Subscription 리소스 삭제",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "cnt",
+                        "in": "path",
+                        "description": "CNT resourceName, CNT 리소스의 이름",
+                        "example": "Test_CNT_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "CNT 하위 SUB 리소스 삭제",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/noti/{nod}/{sub}": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Node 리소스 하위 Subscription 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "NOD 하위 SUB 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Node 리소스 하위 Subscription 리소스 업데이트",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SUB_Update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "NOD 하위 SUB 리소스 업데이트",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Node 리소스 하위 Subscription 리소스 삭제",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "NOD 하위 SUB 리소스 삭제",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/noti/{ae}/{grp}/{sub}": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Group 리소스 하위 Subscription 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "grp",
+                        "in": "path",
+                        "description": "GRP resourceName, GRP 리소스의 이름",
+                        "example": "Test_GRP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "GRP 하위 SUB 리소스 멤버 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Group 리소스 하위 Subscription 리소스 업데이트",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "grp",
+                        "in": "path",
+                        "description": "GRP resourceName, GRP 리소스의 이름",
+                        "example": "Test_GRP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SUB_Update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "GRP 하위 SUB 리소스 업데이트",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Group 리소스 하위 Subscription 리소스 삭제",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_Group_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "grp",
+                        "in": "path",
+                        "description": "GRP resourceName, GRP 리소스의 이름",
+                        "example": "Test_GRP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "GRP 하위 SUB 리소스 멤버 삭제",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/noti/{nod}/{fwr}/{sub}": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Firmware 리소스 하위 Subscription 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fwr",
+                        "in": "path",
+                        "description": "FWR resourceName, FWR 리소스의 이름",
+                        "example": "Test_FWR_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "FWR 하위 SUB 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Firmware 리소스 하위 Subscription 리소스 업데이트",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fwr",
+                        "in": "path",
+                        "description": "FWR resourceName, FWR 리소스의 이름",
+                        "example": "Test_FWR_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SUB_Update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "FWR 하위 SUB 리소스 업데이트",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Subscription"
+                ],
+                "description": "Firmware 리소스 하위 Subscription 리소스 삭제",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fwr",
+                        "in": "path",
+                        "description": "FWR resourceName, FWR 리소스의 이름",
+                        "example": "Test_FWR_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "sub",
+                        "in": "path",
+                        "description": "SUB resourceName, SUB 리소스의 이름",
+                        "example": "Test_SUB_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "Firmware 하위 SUB 리소스 삭제",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/access-controls": {
+            "post": {
+                "tags": [
+                    "Access Control Policy"
+                ],
+                "description": "CSEBase 리소스 하위 Access Control Policy 리소스 등록",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_ACP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ACP_Create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "CB 하위 ACP 리소스 등록",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/access-controls/{ae}": {
+            "post": {
+                "tags": [
+                    "Access Control Policy"
+                ],
+                "description": "Application Entity 리소스 하위 Access Control Policy 리소스 등록",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ACP_Create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "AE 하위 ACP 리소스 등록",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/access-controls/{acp}": {
+            "get": {
+                "tags": [
+                    "Access Control Policy"
+                ],
+                "description": "CSEBase 리소스 하위 Access Control Policy 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더), ACP 등록 시 pvs에 입력된 값",
+                        "example": "/Mobius/Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "acp",
+                        "in": "path",
+                        "description": "ACP resourceName, ACP 리소스의 이름",
+                        "example": "Test_ACP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "CB 하위 ACP 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Access Control Policy"
+                ],
+                "description": "CSEBase 리소스 하위 Access Control Policy 리소스 업데이트",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더), ACP 등록 시 pvs에 입력된 값",
+                        "example": "/Mobius/Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "acp",
+                        "in": "path",
+                        "description": "ACP resourceName, ACP 리소스의 이름",
+                        "example": "Test_ACP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ACP_Update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "CB 하위 ACP 리소스 업데이트",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Access Control Policy"
+                ],
+                "description": "CSEBase 리소스 하위 Access Control Policy 리소스 삭제",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더), ACP 등록 시 pvs에 입력된 값",
+                        "example": "/Mobius/Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "acp",
+                        "in": "path",
+                        "description": "ACP resourceName, ACP 리소스의 이름",
+                        "example": "Test_ACP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "CB 하위 ACP 리소스 삭제",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/access-controls/{ae}/{acp}": {
+            "get": {
+                "tags": [
+                    "Access Control Policy"
+                ],
+                "description": "Application Entity 리소스 하위 Access Control Policy 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더), ACP 등록 시 pvs에 입력된 값",
+                        "example": "/Mobius/Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "acp",
+                        "in": "path",
+                        "description": "ACP resourceName, ACP 리소스의 이름",
+                        "example": "Test_ACP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "AE 하위 ACP 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Access Control Policy"
+                ],
+                "description": "Application Entity 리소스 하위 Access Control Policy 리소스 업데이트",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더), ACP 등록 시 pvs에 입력된 값",
+                        "example": "/Mobius/Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "acp",
+                        "in": "path",
+                        "description": "ACP resourceName, ACP 리소스의 이름",
+                        "example": "Test_ACP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ACP_Update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "AE 하위 ACP 리소스 업데이트",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Access Control Policy"
+                ],
+                "description": "Application Entity 리소스 하위 Access Control Policy 리소스 삭제",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더), ACP 등록 시 pvs에 입력된 값",
+                        "example": "/Mobius/Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ae",
+                        "in": "path",
+                        "description": "AE resourceName, AE 리소스의 이름",
+                        "example": "Test_AE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "acp",
+                        "in": "path",
+                        "description": "ACP resourceName, ACP 리소스의 이름",
+                        "example": "Test_ACP_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "AE 하위 ACP 리소스 삭제",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/firmware/{nod}": {
+            "post": {
+                "tags": [
+                    "Firmware (mgmtObj)"
+                ],
+                "description": "Node 리소스 하위 Firmware (mgmtObj) 리소스 등록",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FWR_Create"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "NOD 하위 FWR (MGO) 리소스 등록",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/onem2m/devices/firmware/{nod}/{fwr}": {
+            "get": {
+                "tags": [
+                    "Firmware (mgmtObj)"
+                ],
+                "description": "Node 리소스 하위 Firmware (mgmtObj) 리소스 조회",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fwr",
+                        "in": "path",
+                        "description": "FWR resourceName, FWR 리소스의 이름",
+                        "example": "Test_FWR_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "NOD 하위 FWR (MGO) 리소스 조회",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Firmware (mgmtObj)"
+                ],
+                "description": "Node 리소스 하위 Firmware (mgmtObj) 리소스 업데이트",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fwr",
+                        "in": "path",
+                        "description": "FWR resourceName, FWR 리소스의 이름",
+                        "example": "Test_FWR_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/FWR_Update"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "NOD 하위 FWR (MGO) 리소스 업데이트",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Firmware (mgmtObj)"
+                ],
+                "description": "Node 리소스 하위 Firmware (mgmtObj) 리소스 삭제",
+                "parameters": [
+                    {
+                        "name": "X-M2M-Origin",
+                        "in": "header",
+                        "description": "리소스의 Origin (헤더)",
+                        "example": "STest_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "nod",
+                        "in": "path",
+                        "description": "NOD resourceName, NOD 리소스의 이름",
+                        "example": "Test_NODE_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fwr",
+                        "in": "path",
+                        "description": "FWR resourceName, FWR 리소스의 이름",
+                        "example": "Test_FWR_01",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "NOD 하위 FWR (MGO) 리소스 삭제",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AE_Create": {
+                "type": "object",
+                "properties": {
+                    "rn": {
+                        "type": "string",
+                        "description": "resourceName, 리소스의 이름",
+                        "example": "Test_AE_01"
+                    },
+                    "api": {
+                        "type": "string",
+                        "description": "applicationID, AE의 고유 ID",
+                        "example": "test"
+                    },
+                    "lbl": {
+                        "type": "array",
+                        "description": "labels, 리소스의 Tag 정보",
+                        "example": [
+                            "test ae 01"
+                        ]
+                    },
+                    "rr": {
+                        "type": "boolean",
+                        "example": true,
+                        "description": "requestReachability, 외부 메시지 수신 여부 (기본값 True)"
+                    }
+                },
+                "required": [
+                    "rn",
+                    "api",
+                    "rr"
+                ]
+            },
+            "AE_Update": {
+                "type": "object",
+                "properties": {
+                    "lbl": {
+                        "type": "array",
+                        "description": "labels, 리소스의 Tag 정보",
+                        "example": [
+                            "test_ae_01"
+                        ]
+                    },
+                    "rr": {
+                        "type": "boolean",
+                        "example": true,
+                        "description": "requestReachability, 외부 메시지 수신 여부 (기본값 True)"
+                    }
+                }
+            },
+            "CNT_Create": {
+                "type": "object",
+                "properties": {
+                    "rn": {
+                        "type": "string",
+                        "description": "resourceName, 리소스의 이름",
+                        "example": "Test_CNT_01"
+                    },
+                    "lbl": {
+                        "type": "array",
+                        "description": "labels, 리소스의 Tag 정보",
+                        "example": [
+                            "test_cnt_01"
+                        ]
+                    }
+                },
+                "required": [
+                    "rn"
+                ]
+            },
+            "CNT_Update": {
+                "type": "object",
+                "properties": {
+                    "lbl": {
+                        "type": "array",
+                        "description": "labels, 리소스의 Tag 정보",
+                        "example": [
+                            "test_cnt_01"
+                        ]
+                    }
+                }
+            },
+            "CIN_Create": {
+                "type": "object",
+                "properties": {
+                    "con": {
+                        "type": "string",
+                        "description": "content, 컨텐츠 (센서 데이터, 위치 정보 등)",
+                        "example": "on"
+                    },
+                    "lbl": {
+                        "type": "array",
+                        "description": "labels, 리소스의 Tag 정보",
+                        "example": [
+                            "lamp_01"
+                        ]
+                    }
+                },
+                "required": [
+                    "con"
+                ]
+            },
+            "NOD_Create": {
+                "type": "object",
+                "properties": {
+                    "rn": {
+                        "type": "string",
+                        "description": "resourceName, 리소스의 이름",
+                        "example": "Test_NODE_01"
+                    },
+                    "ni": {
+                        "type": "string",
+                        "description": "nodeID, Node의 고유 ID",
+                        "example": "urn:gsma:imei:90420156-025763-0;svn=42"
+                    },
+                    "hcl": {
+                        "type": "string",
+                        "description": "hostedCSELink, 매핑되는 CSE 리소스 이름",
+                        "example": "/Mobius"
+                    },
+                    "lbl": {
+                        "type": "array",
+                        "description": "labels, 리소스의 Tag 정보",
+                        "example": [
+                            "test_node_01"
+                        ]
+                    }
+                },
+                "required": [
+                    "rn",
+                    "ni"
+                ]
+            },
+            "NOD_Update": {
+                "type": "object",
+                "properties": {
+                    "lbl": {
+                        "type": "array",
+                        "description": "labels, 리소스의 Tag 정보",
+                        "example": [
+                            "test_node_01"
+                        ]
+                    }
+                }
+            },
+            "GRP_Create": {
+                "type": "object",
+                "properties": {
+                    "rn": {
+                        "type": "string",
+                        "description": "resourceName, 리소스의 이름",
+                        "example": "Test_GRP_01"
+                    },
+                    "mid": {
+                        "type": "array",
+                        "description": "memberIDs, Group 리소스의 멤버 ID",
+                        "example": [
+                            "/Mobius/Test_AE_01/Test_CNT_01",
+                            "/Mobius/Test_AE_02/Test_CNT_02"
+                        ]
+                    },
+                    "mnm": {
+                        "type": "integer",
+                        "description": "maxNrOfMembers, 최대 멤버 수",
+                        "example": 10
+                    }
+                },
+                "required": [
+                    "rn",
+                    "mid",
+                    "mnm"
+                ]
+            },
+            "GRP_Member_Control": {
+                "type": "object",
+                "properties": {
+                    "con": {
+                        "type": "string",
+                        "description": "content, 컨텐츠 (센서 데이터, 위치 정보 등)",
+                        "example": "off"
+                    },
+                    "lbl": {
+                        "type": "array",
+                        "description": "labels, 리소스의 Tag 정보",
+                        "example": "Lamps_01"
+                    }
+                },
+                "required": [
+                    "con"
+                ]
+            },
+            "GRP_Update": {
+                "type": "object",
+                "properties": {
+                    "mnm": {
+                        "type": "integer",
+                        "description": "maxNrOfMembers, 최대 멤버 수",
+                        "example": 15
+                    }
+                }
+            },
+            "SUB_Create": {
+                "type": "object",
+                "properties": {
+                    "rn": {
+                        "type": "string",
+                        "description": "resourceName, 리소스의 이름",
+                        "example": "Test_SUB_01"
+                    },
+                    "enc": {
+                        "type": "object",
+                        "properties": {
+                            "net": {
+                                "type": "array",
+                                "description": "notificationEventType, 알림 이벤트 타입",
+                                "example": [
+                                    "1",
+                                    "2",
+                                    "3",
+                                    "4"
+                                ]
+                            }
+                        },
+                        "description": "eventNotificationCriteria, 이벤트 알림 기준"
+                    },
+                    "nu": {
+                        "type": "array",
+                        "description": "notificationURI, 알림 대상 URI",
+                        "example": [
+                            "http://192.168.0.46/Mobius?ct=json"
+                        ]
+                    }
+                },
+                "required": [
+                    "rn",
+                    "enc",
+                    "net",
+                    "nu"
+                ]
+            },
+            "SUB_Update": {
+                "type": "object",
+                "properties": {
+                    "enc": {
+                        "type": "object",
+                        "properties": {
+                            "net": {
+                                "type": "array",
+                                "description": "notificationEventType, 알림 이벤트 타입",
+                                "example": [
+                                    "1",
+                                    "2",
+                                    "3",
+                                    "4"
+                                ]
+                            }
+                        },
+                        "description": "eventNotificationCriteria, 이벤트 알림 기준"
+                    },
+                    "nu": {
+                        "type": "array",
+                        "description": "notificationURI, 알림 대상 URI",
+                        "example": [
+                            "http://192.168.0.46/Mobius?ct=json"
+                        ]
+                    }
+                }
+            },
+            "ACP_Create": {
+                "type": "object",
+                "properties": {
+                    "rn": {
+                        "type": "string",
+                        "description": "resourceName, 리소스의 이름",
+                        "example": "Test_ACP_01"
+                    },
+                    "pv": {
+                        "type": "object",
+                        "example": {
+                            "acr": [
+                                {
+                                    "acor": [
+                                        "/Mobius/Test_AE_01"
+                                    ],
+                                    "acop": 63
+                                }
+                            ]
+                        },
+                        "description": "privileges, 리소스 접근 권한에 대한 정의"
+                    },
+                    "pvs": {
+                        "type": "object",
+                        "example": {
+                            "acr": [
+                                {
+                                    "acor": [
+                                        "/Mobius/Test_AE_01"
+                                    ],
+                                    "acop": 63
+                                }
+                            ]
+                        },
+                        "description": "selfPrivileges, ACP 리소스 자신의 접근 권한에 대한 정의"
+                    }
+                },
+                "required": [
+                    "rn",
+                    "pv",
+                    "pvs"
+                ]
+            },
+            "ACP_Update": {
+                "type": "object",
+                "properties": {
+                    "pv": {
+                        "type": "object",
+                        "example": {
+                            "acr": [
+                                {
+                                    "acor": [
+                                        "/Mobius/Test_AE_01"
+                                    ],
+                                    "acop": 63
+                                }
+                            ]
+                        },
+                        "description": "privileges, 리소스 접근 권한에 대한 정의"
+                    },
+                    "pvs": {
+                        "type": "object",
+                        "example": {
+                            "acr": [
+                                {
+                                    "acor": [
+                                        "/Mobius/Test_AE_01"
+                                    ],
+                                    "acop": 63
+                                }
+                            ]
+                        },
+                        "description": "selfPrivileges, ACP 리소스 자신의 접근 권한에 대한 정의"
+                    }
+                }
+            },
+            "FWR_Create": {
+                "type": "object",
+                "properties": {
+                    "rn": {
+                        "type": "string",
+                        "description": "resourceName, 리소스의 이름",
+                        "example": "Test_FWR_01"
+                    },
+                    "lbl": {
+                        "type": "array",
+                        "description": "labels, 리소스의 Tag 정보",
+                        "example": [
+                            "firmware"
+                        ]
+                    },
+                    "mgd": {
+                        "type": "integer",
+                        "description": "mgmtDefinition, mgmt 기능 식별자",
+                        "example": 1001
+                    },
+                    "vr": {
+                        "type": "string",
+                        "description": "version, 펌웨어 또는 소프트웨어 버전",
+                        "example": "0.0.1"
+                    },
+                    "fwnnam": {
+                        "type": "string",
+                        "description": "firmwareName, 펌웨어 이름",
+                        "example": "Test_Firmware"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "URL, 펌웨어 이미지 등 경로 URL",
+                        "example": "http://xxx.xxx.xxx.xxx:xxxx/firmware"
+                    },
+                    "ud": {
+                        "type": "boolean",
+                        "description": "update, 펌웨어 업데이트 여부",
+                        "example": true
+                    }
+                },
+                "required": [
+                    "rn",
+                    "mgd"
+                ]
+            },
+            "FWR_Update": {
+                "type": "object",
+                "properties": {
+                    "lbl": {
+                        "type": "array",
+                        "description": "labels, 리소스의 Tag 정보",
+                        "example": [
+                            "firmware"
+                        ]
+                    },
+                    "vr": {
+                        "type": "string",
+                        "description": "version, 펌웨어 또는 소프트웨어 버전",
+                        "example": "0.0.1"
+                    },
+                    "fwnnam": {
+                        "type": "string",
+                        "description": "firmwareName, 펌웨어 이름",
+                        "example": "Test_Firmware"
+                    },
+                    "url": {
+                        "type": "string",
+                        "description": "URL, 펌웨어 이미지 등 경로 URL",
+                        "example": "http://xxx.xxx.xxx.xxx:xxxx/firmware"
+                    },
+                    "ud": {
+                        "type": "boolean",
+                        "description": "update, 펌웨어 업데이트 여부",
+                        "example": true
+                    }
+                }
+            }
+        }
+    }
+}
