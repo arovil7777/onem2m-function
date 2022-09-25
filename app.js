@@ -9,7 +9,7 @@ const resourceAccessControlPolicyRouter = require('./routes/resourceAccessContro
 const deviceListDiscoveryRouter = require('./routes/deviceListDiscovery');
 const deviceFirmwareRouter = require('./routes/deviceFirmware');
 const swaggerUi = require('swagger-ui-express');
-const swaggerOption = require('./swagger/swagger_output.json');
+const swaggerOption = require('./swagger/onem2m-swagger.json');
 // const cors = require('cors');
 
 const app = express();
