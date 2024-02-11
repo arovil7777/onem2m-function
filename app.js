@@ -13,6 +13,7 @@ const swaggerOption = require('./swagger/onem2m-swagger.json');
 // const cors = require('cors');
 
 const app = express();
+const port = 3000;
 
 // Express 기본 설정
 app.use(express.json());
@@ -29,7 +30,7 @@ app.use(function (req, res, next) {
 // app.use(cors());
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerOption));
 
-app.listen(3000, function () {
+app.listen(port, () => {
     // var value=4
     // if(value&'1'||value&'2'||value&'32'||value&'14'){
     //     console.log('통과')
@@ -40,14 +41,15 @@ app.listen(3000, function () {
     // console.log(value&'14')
     // console.log('서버 작동 중 : http://localhost:10210/swagger');
 });
-app.listen(3000, function () {
+app.listen(3000, () => {
     console.log('서버 작동 중 : http://localhost:10210');
 });
 
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
     res.send('테스트입니다.');
 });
 
+/* Routers */
 // 기기 등록
 app.use('/api/onem2m/devices', deviceRegistrationRouter);
 // 자원 관리
