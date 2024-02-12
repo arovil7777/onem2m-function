@@ -1,7 +1,5 @@
 const conf = require("../config/conf");
 
-// function options(state) {
-//     if (state == 'oneM2M') {
 // Mobius Server 정보 (IP/Port/CSEBase Name 등)
 const options = {
     hostname: conf.csebaseip,
@@ -15,8 +13,5 @@ const options = {
         'X-M2M-Origin': '/Mobius'
     }
 };
-// return options;
-//     }
-// }
 
 module.exports = options;

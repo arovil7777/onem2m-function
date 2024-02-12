@@ -31,18 +31,7 @@ app.use(function (req, res, next) {
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerOption));
 
 app.listen(port, () => {
-    // var value=4
-    // if(value&'1'||value&'2'||value&'32'||value&'14'){
-    //     console.log('통과')
-    // }
-    // console.log(value&'1')
-    // console.log(value&'2')
-    // console.log(value&'32')
-    // console.log(value&'14')
-    // console.log('서버 작동 중 : http://localhost:10210/swagger');
-});
-app.listen(3000, () => {
-    console.log('서버 작동 중 : http://localhost:10210');
+    console.log(`서버 작동 중 : http://localhost:${port}`);
 });
 
 app.get('/', (req, res) => {
