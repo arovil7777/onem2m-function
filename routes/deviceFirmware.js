@@ -1,5 +1,4 @@
 const express = require('express');
-const http = require('http');
 const conf = require('../config/conf');
 const options = require('../controller/requestOptions');
 const httpRequest = require('../controller/httpRequest');

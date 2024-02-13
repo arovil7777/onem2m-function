@@ -1,16 +1,13 @@
 const express = require('express');
-const http = require('http');
 const conf = require('../config/conf');
 const options = require('../controller/requestOptions');
 const httpRequest = require('../controller/httpRequest');
-// const bodies = require('../controller/oneM2MBodies');
 
 const router = express.Router();
 
 // AccessControlPolicy 등록 (CSE 하위)
 router.post('/', function (req, res) {
     const creator = req.headers['x-m2m-origin'];
-    // const body = bodies(req, 'acpCreate');
     const body = {
         "m2m:acp": req.body
     };
@@ -31,7 +28,6 @@ router.post('/', function (req, res) {
 router.post('/:ae', function (req, res) {
     const ae_resourceName = req.params.ae;
     const creator = req.headers['x-m2m-origin'];
-    // const body = bodies(req, 'acpCreate');
     const body = {
         "m2m:acp": req.body
     };
@@ -89,7 +85,6 @@ router.get('/:ae/:acp', function (req, res) {
 router.put('/:acp', function (req, res) {
     const acp_resourceName = req.params.acp;
     const creator = req.headers['x-m2m-origin'];
-    // const body = bodies(req, 'acpUpdate');
     const body = {
         "m2m:acp": req.body
     };
@@ -111,7 +106,6 @@ router.put('/:ae/:acp', function (req, res) {
     const ae_resourceName = req.params.ae;
     const acp_resourceName = req.params.acp;
     const creator = req.headers['x-m2m-origin'];
-    // const body = bodies(req, 'acpUpdate');
     const body = {
         "m2m:acp": req.body
     };

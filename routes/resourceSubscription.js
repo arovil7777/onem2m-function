@@ -1,10 +1,7 @@
 const express = require('express');
-const http = require('http');
 const conf = require('../config/conf');
 const options = require('../controller/requestOptions');
 const httpRequest = require('../controller/httpRequest');
-// const bodies = require('../controller/oneM2MBodies');
-// const request = require('request');
 
 const router = express.Router();
 
@@ -13,7 +10,6 @@ const router = express.Router();
 router.post('/:ae', function (req, res) {
     const ae_resourceName = req.params.ae;
     const creator = req.headers['x-m2m-origin'];
-    // const body = bodies(req, 'subCreate');
     const body = {
         "m2m:sub": req.body
     };
@@ -35,7 +31,6 @@ router.post('/:ae/:cnt', function (req, res) {
     const ae_resourceName = req.params.ae;
     const cnt_resourceName = req.params.cnt;
     const creator = req.headers['x-m2m-origin'];
-    // const body = bodies(req, 'subCreate');
     const body = {
         "m2m:sub": req.body
     };
@@ -77,7 +72,6 @@ router.post('/:ae/:grp', function (req, res) {
     const ae_resourceName = req.params.ae;
     const grp_resourceName = req.params.grp;
     const creator = req.headers['x-m2m-origin'];
-    // const body = bodies(req, 'subCreate');
     const body = {
         "m2m:sub": req.body
     };
@@ -220,7 +214,6 @@ router.put('/:ae/:sub', function (req, res) {
     const ae_resourceName = req.params.ae;
     const sub_resourceName = req.params.sub;
     const creator = req.headers['x-m2m-origin'];
-    // const body = bodies(req, 'subUpdate');
     const body = {
         "m2m:sub": req.body
     };
@@ -243,7 +236,6 @@ router.put('/:ae/:cnt/:sub', function (req, res) {
     const cnt_resourceName = req.params.cnt;
     const sub_resourceName = req.params.sub;
     const creator = req.headers['x-m2m-origin'];
-    // const body = bodies(req, 'subUpdate');
     const body = {
         "m2m:sub": req.body
     };
@@ -265,7 +257,6 @@ router.put('/:nod/:sub', function (req, res) {
     const nod_resourceName = req.params.nod;
     const sub_resourceName = req.params.sub;
     const creator = req.headers['x-m2m-origin'];
-    // const body = bodies(req, 'subUpdate');
     const body = {
         "m2m:sub": req.body
     };

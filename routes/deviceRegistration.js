@@ -1,16 +1,13 @@
 const express = require('express');
-const http = require('http');
 const conf = require('../config/conf');
 const options = require('../controller/requestOptions');
 const httpRequest = require('../controller/httpRequest');
-// const bodies = require('../controller/oneM2MBodies');
 
 const router = express.Router();
 
 // AE 생성 (등록)
 router.post('/', function (req, res) {
     const creator = req.headers['x-m2m-origin'];
-    // const body = bodies(req, 'aeCreate');
     const body = {
         "m2m:ae": req.body
     };
@@ -49,7 +46,6 @@ router.get('/:ae', function (req, res) {
 router.put('/:ae', function (req, res) {
     const ae_resourceName = req.params.ae;
     const creator = req.headers['x-m2m-origin'];
-    // const body = bodies(req, 'aeUpdate');
     const body = {
         "m2m:ae": req.body
     };

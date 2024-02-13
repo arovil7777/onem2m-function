@@ -1,9 +1,7 @@
 const express = require('express');
-const http = require('http');
 const conf = require('../config/conf');
 const options = require('../controller/requestOptions');
 const httpRequest = require('../controller/httpRequest');
-// const bodies = require('../controller/oneM2MBodies');
 
 const router = express.Router();
 
@@ -11,7 +9,6 @@ const router = express.Router();
 router.post('/:ae', function (req, res) {
     const ae_resourceName = req.params.ae;
     const creator = req.headers['x-m2m-origin'];
-    // const body = boide(req, 'grpCreate');
     const body = {
         "m2m:grp": req.body
     };
@@ -71,7 +68,6 @@ router.post('/:ae/:grp/data', function (req, res) {
     const ae_resourceName = req.params.ae;
     const grp_resourceName = req.params.grp;
     const creator = req.headers['x-m2m-origin'];
-    // const body = bodies(req, 'cinCreate');
     const body = {
         "m2m:cin": req.body
     };
@@ -93,7 +89,6 @@ router.put('/:ae/:grp', function (req, res) {
     const ae_resourceName = req.params.ae;
     const grp_resourceName = req.params.grp;
     const creator = req.headers['x-m2m-origin'];
-    // const body = bodies(req, 'grpUpdate');
     const body = {
         "m2m:grp": req.body
     };
